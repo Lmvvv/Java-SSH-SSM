@@ -1,0 +1,8 @@
+功能：
+	首先，我在LoginServlet1里创建了一个session。
+		在这个session里，我放的是在login.jsp的文本框里输入的username和password。
+	接着，我又将这个session持久化，设置的路径：cookie.setPath("/TheFirstTest/");
+						                 时间：cookie.setMaxAge(60*10);(十分钟)
+		用户在十分钟以内再次访问时，不用输入用户名和密码，就可以直接跳到管理页面（怎么实现？）
+			由于上面设置了持久化的session，那么，在规定那十分钟内可以取出session存在里面的username和password
+			用取出的数据与数据库原来的数据做比对，即可判断是跳过还是留在当前页面

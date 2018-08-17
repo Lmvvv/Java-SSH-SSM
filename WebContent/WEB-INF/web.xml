@@ -10,6 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+    <display-name>loginFilter</display-name>
+    <filter-name>loginFilter</filter-name>
+    <filter-class>com.lh.filter.loginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>loginFilter</filter-name>
+    <url-pattern>/JSP/login.jsp</url-pattern>
+  </filter-mapping>
   <servlet>
     <description></description>
     <display-name>FruitServlet</display-name>
@@ -69,5 +78,25 @@
   <servlet-mapping>
     <servlet-name>LoginServlet1</servlet-name>
     <url-pattern>/LoginServlet1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckedServlet</display-name>
+    <servlet-name>CheckedServlet</servlet-name>
+    <servlet-class>com.lh.filter.CheckedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckedServlet</servlet-name>
+    <url-pattern>/CheckedServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginOutServlet</display-name>
+    <servlet-name>LoginOutServlet</servlet-name>
+    <servlet-class>com.lh.filter.LoginOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginOutServlet</servlet-name>
+    <url-pattern>/LoginOutServlet</url-pattern>
   </servlet-mapping>
 </web-app>

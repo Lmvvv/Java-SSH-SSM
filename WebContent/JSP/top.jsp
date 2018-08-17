@@ -29,11 +29,14 @@
 </script>
 </head>
 <body onload="startclock()">
-	<ul >
+	<ul>
 		<li><form name=clock>
 				<input name=thetime size=100>
 			</form>
 		<li>Server:<%=application.getServerInfo()%>
+		<li><form action="${pageContext.request.contextPath}/LoginOutServlet">
+				<input type="submit" value="退出">
+			</form>
 	</ul>
 </body>
 </html>

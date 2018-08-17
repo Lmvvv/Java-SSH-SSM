@@ -3,9 +3,12 @@ package com.lh.web;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,22 +21,34 @@ public class LoginServlet1 extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int id=Integer.parseInt(request.getParameter("id"));
-		String name=request.getParameter("name");
-		if(login(id, name)){
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		//创建一个session
+		HttpSession session=request.getSession();
+		session.setAttribute("username", username);
+		session.setAttribute("password", password);
+//		session.setAttribute("count", 0);
+		String jsessionID=session.getId();
+		//session持久化
+		Cookie cookie=new Cookie("JSESSIONID", jsessionID);
+		cookie.setPath("/TheFirstTest/");
+		cookie.setMaxAge(60);
+		response.addCookie(cookie);
+
+		if(login(username, password)){
 			request.getRequestDispatcher("/JSP/management.jsp").forward(request, response);
 		}else {
 			
 		}
 	}
 	
-	private boolean login(int id,String name){
+	private boolean login(String username,String password){
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			conn=JDBCUtils.getConn();
-			String sql="select id,name from fruit where id='"+id+"'"+"and name='"+name+"'";
+			String sql="select username,password from user where username='"+username+"'"+"and password='"+password+"'";
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery(sql);
 			if(rs.next()){
@@ -46,6 +61,8 @@ public class LoginServlet1 extends HttpServlet {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCUtils.close(conn, ps, rs);
 		}
 		return f;
 	}
