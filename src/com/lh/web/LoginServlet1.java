@@ -27,12 +27,12 @@ public class LoginServlet1 extends HttpServlet {
 		HttpSession session=request.getSession();
 		session.setAttribute("username", username);
 		session.setAttribute("password", password);
-//		session.setAttribute("count", 0);
+		System.out.println(username+password);
 		String jsessionID=session.getId();
 		//session持久化
 		Cookie cookie=new Cookie("JSESSIONID", jsessionID);
 		cookie.setPath("/TheFirstTest/");
-		cookie.setMaxAge(60);
+		cookie.setMaxAge(60*5);
 		response.addCookie(cookie);
 
 		if(login(username, password)){
