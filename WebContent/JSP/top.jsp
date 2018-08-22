@@ -34,6 +34,7 @@
 				<input name=thetime size=100>
 			</form>
 		<li>Server:<%=application.getServerInfo()%>
+		<li>username:<%=session.getAttribute("username") %>
 		<li><form action="${pageContext.request.contextPath}/LoginOutServlet">
 				<input type="submit" value="退出">
 			</form>

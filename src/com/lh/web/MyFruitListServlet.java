@@ -15,27 +15,28 @@ import javax.servlet.http.HttpSession;
 
 import com.lh.utils.JDBCUtils;
 
-public class FruitListServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class MyFruitListServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 
-		List<Fruit> list=findFruit();
+		HttpSession session = request.getSession();
+		String username=(String) session.getAttribute("username");
+		
+		List<Fruit> list=findFruit(username);
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/JSP/fruitlist.jsp").forward(request, response);
+		request.getRequestDispatcher("/JSP/myfruitlist.jsp").forward(request, response);
 	
 	}
-	
-	private List<Fruit> findFruit(){
+
+	private List<Fruit> findFruit(String username){
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			conn=JDBCUtils.getConn();
-			String sql="select * from fruit";
+			String sql="select * from fruit where username='"+username+"'";
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery(sql);
 			List<Fruit> list=new ArrayList<Fruit>();

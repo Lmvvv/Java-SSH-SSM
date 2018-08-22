@@ -24,7 +24,6 @@ public class FruitServlet extends HttpServlet {
 		Fruit fruit=findFruitById(id);
 		
 		request.setAttribute("fruit", fruit);
-		System.out.println("111111111111111111");
 		request.getRequestDispatcher("/JSP/fruitupdata.jsp")
 		.forward(request, response);
 		

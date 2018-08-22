@@ -7,11 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/LoginServlet1" method="POST">
-	用户名:<input type="text" name="username"><br>
-	密    码:<input type="password" name="password"><br>
 	
-	<input type="submit" value="登陆"><br/>
+	<form action="${pageContext.request.contextPath}/LoginServlet1"
+		method="POST">
+		用户名:<input type="text" name="username"><br> 密 码:<input
+			type="password" name="password"><br> <input
+			type="submit" value="登陆"><br />
 	</form>
+
+
 </body>
 </html>
