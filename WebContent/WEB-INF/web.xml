@@ -109,4 +109,14 @@
     <servlet-name>MyFruitListServlet</servlet-name>
     <url-pattern>/MyFruitListServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FruitListFY</display-name>
+    <servlet-name>FruitListFY</servlet-name>
+    <servlet-class>com.lh.web.FruitListFY</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FruitListFY</servlet-name>
+    <url-pattern>/FruitListFY</url-pattern>
+  </servlet-mapping>
 </web-app>

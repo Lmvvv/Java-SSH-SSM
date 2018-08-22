@@ -33,6 +33,7 @@ public class FruitListServlet extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		
 		try {
 			conn=JDBCUtils.getConn();
 			String sql="select * from fruit";

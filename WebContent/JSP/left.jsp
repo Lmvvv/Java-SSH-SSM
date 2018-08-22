@@ -8,6 +8,7 @@
 </head>
 <body margin="0">
 	<div>
+		<div><a href="${pageContext.request.contextPath}/FruitListFY" target="rightFrame">分页显示所有物品</a></div>
 		<div><a href="${pageContext.request.contextPath}/FruitListServlet" target="rightFrame">显示所有物品</a></div>
 		<div><a href="${pageContext.request.contextPath}/MyFruitListServlet" target="rightFrame">显示自己的物品</a></div>
 		<div><a href="fruitadd.jsp" target="rightFrame" >添加物品</a></div>
