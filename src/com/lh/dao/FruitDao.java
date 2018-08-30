@@ -1,4 +1,4 @@
-package com.lh.web;
+package com.lh.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lh.model.Fruit;
 import com.lh.utils.JDBCUtils;
 
 public class FruitDao {

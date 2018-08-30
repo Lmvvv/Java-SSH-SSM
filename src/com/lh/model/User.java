@@ -1,4 +1,4 @@
-package com.lh.web;
+package com.lh.model;
 
 public class User {
 

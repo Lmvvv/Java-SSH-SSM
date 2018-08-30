@@ -23,11 +23,20 @@ public class LoginServlet1 extends HttpServlet {
 		
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
+		
+//		Cookie cookieusername=new Cookie("cookieusername", username);
+//		Cookie cookiepassword=new Cookie("cookiepassword", password);
+//		cookieusername.setMaxAge(60*10);
+//		cookiepassword.setMaxAge(60*10);
+//		cookieusername.setPath("/TheFirstTest/");
+//		cookiepassword.setPath("/TheFirstTest/");
+//		response.addCookie(cookieusername);
+//		response.addCookie(cookiepassword);
 		//创建一个session
 		HttpSession session=request.getSession();
 		session.setAttribute("username", username);
 		session.setAttribute("password", password);
-		System.out.println(username+password);
+		
 		String jsessionID=session.getId();
 		//session持久化
 		Cookie cookie=new Cookie("JSESSIONID", jsessionID);
@@ -35,10 +44,19 @@ public class LoginServlet1 extends HttpServlet {
 		cookie.setMaxAge(60*5);
 		response.addCookie(cookie);
 
+//		if(login(username, password)){
+//			request.getRequestDispatcher("/WEB-INF/JSP/management.jsp").forward(request, response);
+//		}else {
+//			request.getRequestDispatcher("/WEB-INF/JSP/fruitlist.jsp").forward(request, response);
+//		}
 		if(login(username, password)){
-			request.getRequestDispatcher("/JSP/management.jsp").forward(request, response);
-		}else {
-			
+			if(username.equals("admin")){
+				request.getRequestDispatcher("/WEB-INF/JSP/management.jsp").forward(request, response);
+			}else{
+				request.getRequestDispatcher("/WEB-INF/JSP/user.jsp").forward(request, response);
+			}
+		}else{
+			request.getRequestDispatcher("/WEB-INF/JSP/login.jsp").forward(request, response);
 		}
 	}
 	
@@ -48,9 +66,11 @@ public class LoginServlet1 extends HttpServlet {
 		ResultSet rs = null;
 		try {
 			conn=JDBCUtils.getConn();
-			String sql="select username,password from user where username='"+username+"'"+"and password='"+password+"'";
+			String sql="select * from user where username=? and password=?";
 			ps=conn.prepareStatement(sql);
-			rs=ps.executeQuery(sql);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			rs=ps.executeQuery();
 			if(rs.next()){
 				f=true;
 				return f;

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lh.model.Fruit;
 import com.lh.utils.JDBCUtils;
 
 
@@ -24,7 +25,7 @@ public class FruitServlet extends HttpServlet {
 		Fruit fruit=findFruitById(id);
 		
 		request.setAttribute("fruit", fruit);
-		request.getRequestDispatcher("/JSP/fruitupdata.jsp")
+		request.getRequestDispatcher("/WEB-INF/JSP/fruitupdata.jsp")
 		.forward(request, response);
 		
 	}

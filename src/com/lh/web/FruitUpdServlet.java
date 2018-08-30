@@ -21,7 +21,6 @@ public class FruitUpdServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 
 		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println(id);
 		String name = request.getParameter("name");
 		double price = Double.parseDouble(request.getParameter("price"));
 		int num = Integer.parseInt(request.getParameter("num"));

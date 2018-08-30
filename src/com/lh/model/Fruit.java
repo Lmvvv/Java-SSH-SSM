@@ -1,4 +1,4 @@
-package com.lh.web;
+package com.lh.model;
 
 public class Fruit {
 
@@ -6,6 +6,7 @@ public class Fruit {
 	private String name;
 	private double price;
 	private int num;
+	
 	public int getId() {
 		return id;
 	}

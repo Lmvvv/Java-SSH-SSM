@@ -30,12 +30,13 @@
 </head>
 <body onload="startclock()">
 	<ul>
+		<li><a href="${pageContext.request.contextPath}/ReturnToTheHomePage">返回首页</a></li>
 		<li><form name=clock>
 				<input name=thetime size=100>
 			</form>
 		<li>Server:<%=application.getServerInfo()%>
 		<li>username:<%=session.getAttribute("username") %>
-		<li><form action="${pageContext.request.contextPath}/LoginOutServlet">
+		<li><form action="${pageContext.request.contextPath}">
 				<input type="submit" value="退出">
 			</form>
 	</ul>

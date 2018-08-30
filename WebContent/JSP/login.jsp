@@ -10,9 +10,10 @@
 	
 	<form action="${pageContext.request.contextPath}/LoginServlet1"
 		method="POST">
-		用户名:<input type="text" name="username"><br> 密 码:<input
-			type="password" name="password"><br> <input
-			type="submit" value="登陆"><br />
+		用户名:<input type="text" name="username"><br> 
+		密 &nbsp;码:<input type="password" name="password"><br> 
+		<!-- <label> <input type="checkbox" name="autologin" value="autologin"> 自动登录</label><br> -->
+			<input	type="submit" value="登陆"><br />
 	</form>
 
 

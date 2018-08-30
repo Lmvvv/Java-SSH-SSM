@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lh.model.Fruit;
 import com.lh.utils.JDBCUtils;
 
 public class MyFruitListServlet extends HttpServlet {
@@ -26,7 +27,7 @@ public class MyFruitListServlet extends HttpServlet {
 		
 		List<Fruit> list=findFruit(username);
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/JSP/myfruitlist.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/JSP/myfruitlist.jsp").forward(request, response);
 	
 	}
 

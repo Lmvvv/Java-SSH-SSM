@@ -34,22 +34,7 @@ public class loginFilter implements Filter {
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		// 判断用户是否已经登陆过了
-		HttpSession session = req.getSession();
-		String username = (String) session.getAttribute("username");
-		String password = (String) session.getAttribute("password");
-		System.out.println("loginFilter " + "username=" + username + " password=" + password);
-
-		// 如果用户已经登陆过了，则直接进入到管理页面
-		if (login(username, password) && username != null && password != null) {
-			// response.getWriter().write("<h1 style='text-align:center'>");
-			// response.getWriter().write("您已经登陆过了，可以跳过登录页面..");
-			// response.getWriter().write("</h1>");
-			
-			res.setHeader("Refresh", "2;url=" + req.getContextPath() + "/CheckedServlet");
-		}
-
-		// pass the request along the filter chain
+	
 		chain.doFilter(request, response);
 	}
 
@@ -58,11 +43,12 @@ public class loginFilter implements Filter {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			conn = JDBCUtils.getConn();
-			String sql = "select username,password from user where username='" + username + "'" + "and password='"
-					+ password + "'";
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery(sql);
+			conn=JDBCUtils.getConn();
+			String sql="select * from user where username=? and password=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			rs=ps.executeQuery();
 			if (rs.next()) {
 				f = true;
 				return f;
@@ -75,6 +61,7 @@ public class loginFilter implements Filter {
 			e.printStackTrace();
 		} finally {
 			JDBCUtils.close(conn, ps, rs);
+			
 		}
 		return f;
 	}

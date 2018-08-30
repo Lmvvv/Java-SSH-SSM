@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h1 align="center">所有的物品</h1>
+
+
 	<hr>
 	<table border="1">
 		<tr>
@@ -16,6 +18,7 @@
 			<th>商品名称</th>
 			<th>商品单价</th>
 			<th>库存数量</th>
+			
 			<th>操 作</th>
 		</tr>
 		<c:forEach items="${list}" var="fruit">
@@ -24,16 +27,16 @@
 				<td>${fruit.name}</td>
 				<td>${fruit.price}</td>
 				<td>${fruit.num}</td>
+				
 				<td><a id="delFruit"
 					href="${pageContext.request.contextPath}/FruitDelServlet?id=${fruit.id}">删除</a>
 					<a id="updFruit"
 					href="${pageContext.request.contextPath}/FruitServlet?id=${fruit.id}">修改</a>
+					
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<!-- 分页 -->
-	
-		
+	<br>
 </body>
 </html>

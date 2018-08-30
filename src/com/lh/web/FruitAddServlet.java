@@ -21,30 +21,26 @@ public class FruitAddServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 
-		HttpSession session=request.getSession();
-		String username=(String) session.getAttribute("username");
-		
 		String name = request.getParameter("name");
 		double price = Double.parseDouble(request.getParameter("price"));
 		int num = Integer.parseInt(request.getParameter("num"));
 			
-		addFruit(name, price, num,username);	
+		addFruit(name, price, num);	
 		response.getWriter().write("商品添加成功");
 		response.setHeader("Refresh", "1;url=" + request.getContextPath() + "/FruitListServlet");
 	}
 
-	private void addFruit(String name, double price, int num,String username) {
+	private void addFruit(String name, double price, int num) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			conn = JDBCUtils.getConn();
-			String sql = "insert into fruit values(null, ?,?,?,?)";
+			String sql = "insert into fruit values(null, ?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
 			ps.setDouble(2, price);
 			ps.setInt(3, num);
-			ps.setString(4, username);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lh.dao.FruitDao;
+import com.lh.model.Fruit;
+
 public class FruitListFY extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +36,7 @@ public class FruitListFY extends HttpServlet {
 		request.setAttribute("totalPage", fruitdao.getPage());
 		request.setAttribute("fylist", fylist);
 		request.setAttribute("pageNo", pageNo);
-		request.getRequestDispatcher("/JSP/fyfruitlist.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/JSP/fyfruitlist.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
