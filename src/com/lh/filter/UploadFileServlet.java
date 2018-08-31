@@ -28,7 +28,7 @@ public class UploadFileServlet extends HttpServlet {
 		ServletFileUpload sfu = new ServletFileUpload(factory);// 创建一个文件上传解析器
 		sfu.setHeaderEncoding("utf-8");
 		factory.setSizeThreshold(1024 * 500);
-		String savePath = this.getServletContext().getRealPath("/WEB-INF/upload");
+		String savePath = this.getServletContext().getRealPath("/upload");
 		File f = new File(savePath);
 		factory.setRepository(f);
 		try {
@@ -58,7 +58,9 @@ public class UploadFileServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("/WEB-INF/JSP/upload.jsp").forward(request, response);
+		response.getWriter().write("<h1 style='color:red;text-align:center'>上传成功</h1>");
+		response.setHeader("Refresh", "2;url="+request.getContextPath()+"/FileListServlet");
+		//request.getRequestDispatcher("/WEB-INF/JSP/upload.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

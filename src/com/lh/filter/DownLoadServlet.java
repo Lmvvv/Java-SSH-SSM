@@ -18,7 +18,7 @@ public class DownLoadServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String fileName = request.getParameter("filename");
-		String filesavepath = this.getServletContext().getRealPath("/WEB-INF/upload");
+		String filesavepath = this.getServletContext().getRealPath("/upload");
 		File file = new File(filesavepath + "\\" + fileName);
 		// 设置响应头，控制浏览器下载该文件
 		response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));

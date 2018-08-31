@@ -48,6 +48,8 @@
 		<a href="${pageContext.request.contextPath}/FruitListFY?pageNo=${pageNo+1}">下一页</a>	
 	</c:if>
 	<a href="${pageContext.request.contextPath}/FruitListFY?pageNo=${totalPage}">最后页</a>
-	<a >导出为表格</a>
+	<a href="${pageContext.request.contextPath}/FruitExcelServlet?pageNo=${pageNo}">导出为表格</a>
+	<a href="${pageContext.request.contextPath }/ExcelToFruitServlet">导入数据</a>
+	
 </body>
 </html>

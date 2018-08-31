@@ -15,7 +15,7 @@ public class FileListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=utf-8");
-		String uploadFilePath = this.getServletContext().getRealPath("/WEB-INF/upload");
+		String uploadFilePath = this.getServletContext().getRealPath("/upload");
 		File file = new File(uploadFilePath);
 		Map<String, String> fileNameMap = new HashMap<String, String>();
 		filelist(file, fileNameMap);

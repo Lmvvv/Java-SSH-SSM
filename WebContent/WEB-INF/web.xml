@@ -240,4 +240,24 @@
     <servlet-name>DownLoadServlet</servlet-name>
     <url-pattern>/DownLoadServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FruitExcelServlet</display-name>
+    <servlet-name>FruitExcelServlet</servlet-name>
+    <servlet-class>com.lh.web.FruitExcelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FruitExcelServlet</servlet-name>
+    <url-pattern>/FruitExcelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcelToFruitServlet</display-name>
+    <servlet-name>ExcelToFruitServlet</servlet-name>
+    <servlet-class>com.lh.web.ExcelToFruitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcelToFruitServlet</servlet-name>
+    <url-pattern>/ExcelToFruitServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

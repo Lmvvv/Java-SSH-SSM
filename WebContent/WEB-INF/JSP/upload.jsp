@@ -17,6 +17,6 @@
 			<input type="submit" value="提交">
 			<br>
 	</form>
-	<%-- <a href="${pageContext.request.contextPath }/WEB-INF/JSP/filelist.jsp">查看下载文件</a> --%>
+	
 </body>
 </html>
